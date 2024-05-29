@@ -5,5 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <a :href="href" target="_blank"><slot /></a>
+  <a :href="href" target="_blank">
+    <slot />
+  </a>
 </template>

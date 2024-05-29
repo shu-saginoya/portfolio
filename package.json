@@ -7,11 +7,25 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ignore-path .gitignore .",
+    "fix": "eslint --fix --ignore-path .gitignore .",
+    "format": "prettier . --write"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.19",
     "nuxt": "^3.11.2",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.3.13",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "vue-tsc": "^1.8.27"
   }
 }
