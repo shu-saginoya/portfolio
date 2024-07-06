@@ -16,7 +16,9 @@
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
     "autoprefixer": "^10.4.19",
+    "dayjs": "^1.11.11",
     "nuxt": "^3.11.2",
+    "nuxt-microcms-module": "^3.0.2",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "vue": "^3.4.27",
@@ -24,6 +26,8 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.13",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@tailwindcss/typography": "^0.5.13",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
