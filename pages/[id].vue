@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Blog } from "~~/types/blog";
+import type { Blog } from "@/types/blog";
 
 const { params } = useRoute();
 
@@ -7,7 +7,6 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
   endpoint: "blogs",
   contentId: Array.isArray(params.id) ? params.id[0] : params.id,
 });
-console.log(data);
 </script>
 
 <template>
@@ -35,7 +34,7 @@ console.log(data);
           {{ dateFormat(data.publishedAt ?? data.createdAt) }}
         </div>
       </div>
-      <div v-html="data.content" class="prose mt-6 md:mt-10"></div>
+      <div class="prose mt-6 md:mt-10" v-html="data.content"></div>
     </template>
     <template v-else>
       <h1 class="text-3xl font-semibold">記事が見つかりませんでした</h1>
