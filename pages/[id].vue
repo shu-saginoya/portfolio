@@ -31,7 +31,7 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
           {{ data.category?.name }}
         </div>
         <div class="text-sm text-gray-700">
-          {{ dateFormat(data.publishedAt ?? data.createdAt) }}
+          {{ dateFormat(data.date ?? data.publishedAt ?? data.createdAt) }}
         </div>
       </div>
       <div class="prose mt-6 md:mt-10" v-html="data.content"></div>

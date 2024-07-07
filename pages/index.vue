@@ -3,6 +3,7 @@ import type { Blog } from "@/types/blog";
 
 const { data } = await useMicroCMSGetList<Blog>({
   endpoint: "blogs",
+  queries: { orders: "-date", limit: 100 },
 });
 </script>
 
@@ -34,7 +35,7 @@ const { data } = await useMicroCMSGetList<Blog>({
               {{ blog.title }}
             </div>
             <div class="mt-1 text-sm text-gray-700">
-              {{ dateFormat(blog.publishedAt ?? blog.createdAt) }}
+              {{ dateFormat(blog.date ?? blog.publishedAt ?? blog.createdAt) }}
             </div>
           </div>
         </NuxtLink>
