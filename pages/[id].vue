@@ -15,6 +15,15 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
       <h1 class="text-3xl font-semibold">
         {{ data.title }}
       </h1>
+      <ul v-if="data.tags" class="flex gap-2">
+        <li v-for="tag in data.tags" :key="tag.id">
+          <span
+            class="rounded bg-slate-600 px-1.5 py-0.5 text-sm font-semibold text-white"
+          >
+            {{ tag.name }}
+          </span>
+        </li>
+      </ul>
       <img
         :src="data.eyecatch?.url"
         :width="data.eyecatch?.width"
@@ -39,5 +48,8 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
     <template v-else>
       <h1 class="text-3xl font-semibold">記事が見つかりませんでした</h1>
     </template>
+    <NuxtLink to="/" class="mt-6 block text-center text-indigo-600"
+      >← 記事一覧に戻る</NuxtLink
+    >
   </main>
 </template>
