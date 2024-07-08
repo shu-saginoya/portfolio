@@ -7,6 +7,6 @@ export type Blog = {
   date: string;
   content?: string;
   eyecatch?: MicroCMSImage;
-  category?: (MicroCMSListContent & Category) | null;
-  tags?: (MicroCMSListContent[] & Tag[]) | null;
+  category: MicroCMSListContent & Category;
+  tags?: (MicroCMSListContent & Tag)[] | null;
 };
