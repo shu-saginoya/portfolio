@@ -11,7 +11,7 @@ const { data: catData } = await useMicroCMSGetList<Category>({
   endpoint: "categories",
 });
 
-const { hiddenCatList, changeHiddenCatList } = useHiddenCatList();
+const { activeCategory, setCategory, clearCategory } = useActiveCategory();
 </script>
 
 <template>
@@ -19,23 +19,25 @@ const { hiddenCatList, changeHiddenCatList } = useHiddenCatList();
     <h1 class="text-center font-sans text-4xl font-semibold">
       Shu Saginoya Portfolio
     </h1>
-    <ul class="flex gap-2">
+    <ul class="flex gap-1">
+      <li>
+        <BtnCat :active="!activeCategory" @click="clearCategory">
+          すべて
+        </BtnCat>
+      </li>
       <li v-for="cat in catData?.contents" :key="cat.id">
-        <button
-          class="inline-block rounded bg-indigo-600 px-1.5 py-0.5 text-sm font-semibold text-white"
-          :class="{
-            'opacity-50': hiddenCatList.includes(cat.id),
-          }"
-          @click="changeHiddenCatList(cat.id)"
+        <BtnCat
+          :active="activeCategory === cat.id"
+          @click="setCategory(cat.id)"
         >
           {{ cat.name }}
-        </button>
+        </BtnCat>
       </li>
     </ul>
-    <ul class="grid grid-cols-1 gap-8">
+    <TransitionGroup name="list" tag="ul" class="grid grid-cols-1 gap-8">
       <li
         v-for="blog in data?.contents"
-        v-show="!hiddenCatList.includes(blog.category.id)"
+        v-show="!activeCategory || activeCategory === blog.category.id"
         :key="blog.id"
       >
         <NuxtLink
@@ -64,6 +66,18 @@ const { hiddenCatList, changeHiddenCatList } = useHiddenCatList();
           </div>
         </NuxtLink>
       </li>
-    </ul>
+    </TransitionGroup>
   </main>
 </template>
+
+<style scoped>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
