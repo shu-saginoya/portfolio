@@ -15,10 +15,11 @@ const { activeCategory, setCategory, clearCategory } = useActiveCategory();
 </script>
 
 <template>
-  <main class="flex flex-col gap-8 items-center">
+  <main class="flex flex-col gap-6 items-center">
     <h1 class="text-center font-sans text-4xl font-semibold">
       Shu Saginoya Portfolio
     </h1>
+    <NuxtLink to="/profile" class="text-indigo-600">Profile ＞</NuxtLink>
     <ul class="flex gap-1">
       <li>
         <BtnCat :active="!activeCategory" @click="clearCategory">
