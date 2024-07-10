@@ -36,6 +36,9 @@ const profile = {
         <span class="col-span-2">{{ item }}</span>
       </li>
     </ul>
+    <p>
+      映像制作・営業企画などを経て現職のウェブサイトの制作に従事。高校時代は情報技術科に属していたため、プログラミンについても抵抗なく新技術の導入を行い、継続的な業務改善に役立てています。
+    </p>
     <ul class="flex gap-8 items-center">
       <li>
         <NuxtLink to="https://github.com/shu-saginoya" target="_blank">
