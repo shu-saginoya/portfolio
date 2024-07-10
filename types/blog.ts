@@ -5,8 +5,8 @@ import type { Tag } from "./tag";
 export type Blog = {
   title: string;
   date: string;
-  content?: string;
-  eyecatch?: MicroCMSImage;
   category: MicroCMSListContent & Category;
   tags?: (MicroCMSListContent & Tag)[] | null;
+  content?: string;
+  eyecatch?: MicroCMSImage;
 };

@@ -10,29 +10,19 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
 </script>
 
 <template>
-  <main>
+  <main class="flex flex-col gap-6">
     <template v-if="data">
       <h1 class="text-3xl font-semibold">
         {{ data.title }}
       </h1>
-      <ul v-if="data.tags" class="flex gap-2">
-        <li v-for="tag in data.tags" :key="tag.id">
-          <span
-            class="rounded bg-slate-600 px-1.5 py-0.5 text-sm font-semibold text-white"
-          >
-            {{ tag.name }}
-          </span>
-        </li>
-      </ul>
       <img
         :src="data.eyecatch?.url"
         :width="data.eyecatch?.width"
         :height="data.eyecatch?.height"
         alt=""
-        class="mt-6 md:mt-10"
       />
       <div
-        class="mt-4 flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4"
+        class="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4"
       >
         <div
           class="rounded border-2 border-indigo-600 px-1.5 py-0.5 text-sm font-semibold text-indigo-600"
@@ -43,7 +33,12 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
           {{ dateFormat(data.date ?? data.publishedAt ?? data.createdAt) }}
         </div>
       </div>
-      <div class="prose mt-6 md:mt-10" v-html="data.content"></div>
+      <div class="prose" v-html="data.content"></div>
+      <ul v-if="data.tags" class="flex gap-2 items-center">
+        <li v-for="tag in data.tags" :key="tag.id">
+          <span class="text-sm text-gray-600"> #{{ tag.name }} </span>
+        </li>
+      </ul>
     </template>
     <template v-else>
       <h1 class="text-3xl font-semibold">記事が見つかりませんでした</h1>

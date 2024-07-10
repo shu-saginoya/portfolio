@@ -53,10 +53,19 @@ const { activeCategory, setCategory, clearCategory } = useActiveCategory();
             alt=""
           />
           <div class="md:p-2.5 md:pr-0">
-            <div
-              class="inline-block rounded border-2 border-indigo-600 px-1.5 py-0.5 text-sm font-semibold text-indigo-600"
-            >
-              {{ blog.category?.name }}
+            <div class="flex gap-2 items-center">
+              <div
+                class="inline-block rounded border-2 border-indigo-600 px-1.5 py-0.5 text-sm font-semibold text-indigo-600"
+              >
+                {{ blog.category?.name }}
+              </div>
+              <span
+                v-for="tag in blog.tags"
+                :key="tag.id"
+                class="text-sm text-gray-600"
+              >
+                #{{ tag.name }}
+              </span>
             </div>
             <div class="mt-2 text-lg font-semibold md:text-xl">
               {{ blog.title }}
