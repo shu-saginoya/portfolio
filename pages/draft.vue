@@ -10,20 +10,20 @@ const getData = () => {
   }
 
   const { data: response } = useFetch(
-    `https://saginoya-portfolio.microcms.io/api/v1/blog/${query.id}?draftKey=${query.draftKey}`,
+    `https://saginoya-portfolio.microcms.io/api/v1/blogs/${query.id}?draftKey=${query.draftKey}`,
     {
       headers: {
         "X-MICROCMS-API-KEY": "153bf9bdde1e48a0b11e40b4844c6322d543",
       },
     }
   );
-  data.value = response;
+  data.value = response.value;
 };
 getData();
 </script>
 
 <template>
-  <main v-if="data" class="flex flex-col gap-6">
+  <main class="flex flex-col gap-6">
     <template v-if="data">
       <h1 class="text-3xl font-semibold">
         {{ data.title }}
@@ -56,8 +56,5 @@ getData();
     <template v-else>
       <h1 class="text-3xl font-semibold">記事が見つかりませんでした</h1>
     </template>
-    <NuxtLink to="/" class="mt-6 block text-center text-indigo-600"
-      >＜ 記事一覧に戻る</NuxtLink
-    >
   </main>
 </template>
