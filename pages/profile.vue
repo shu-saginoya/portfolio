@@ -1,19 +1,45 @@
 <script setup lang="ts">
-const birthday = {
+type Birthday = {
+  year: number;
+  month: number;
+  date: number;
+};
+
+const birthday: Birthday = {
   year: 1986,
   month: 11,
   date: 12,
 };
 
-const getAge = () => {
+const getAge = (birthday: Birthday) => {
+  const { year, month, date } = birthday;
+
   const today = new Date();
-  const birth = new Date(birthday.year, birthday.month, birthday.date);
-  return today.getFullYear() - birth.getFullYear();
+  const birthdate = new Date(year, month - 1, date);
+
+  // 今年の誕生日の日付データを取得
+  const currentYearBirthday = new Date(
+    today.getFullYear(),
+    birthdate.getMonth(),
+    birthdate.getDate()
+  );
+
+  // 生まれた年と今年の差を計算
+  let age = today.getFullYear() - birthdate.getFullYear();
+
+  // 今日の日付と今年の誕生日を比較
+  if (today < currentYearBirthday) {
+    // 今年誕生日を迎えていない場合、1を引く
+    age--;
+  }
+
+  // 年齢の値を返す
+  return age;
 };
 
 const profile = {
   name: "鷺野谷 周",
-  age: getAge(),
+  age: getAge(birthday),
   email: "shu.saginoya@gmail.com",
 };
 </script>
@@ -42,17 +68,17 @@ const profile = {
     <ul class="flex gap-8 items-center">
       <li>
         <NuxtLink to="https://github.com/shu-saginoya" target="_blank">
-          <Icon name="uil:github" color="black" size="36px" />
+          <Icon name="uil:github" color="black" size="24px" alt="GitHub" />
         </NuxtLink>
       </li>
       <li>
         <NuxtLink to="https://zenn.dev/shu_saginoya" target="_blank">
-          <Icon name="simple-icons:zenn" color="black" size="24px" />
+          <Icon name="simple-icons:zenn" color="black" size="24px" alt="Zenn" />
         </NuxtLink>
       </li>
       <li>
         <NuxtLink to="https://x.com/shu_saginoya" target="_blank">
-          <Icon name="prime:twitter" color="black" size="24px" />
+          <Icon name="prime:twitter" color="black" size="24px" alt="X" />
         </NuxtLink>
       </li>
     </ul>
