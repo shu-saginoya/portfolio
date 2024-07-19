@@ -16,12 +16,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: [
-    "@vueuse/nuxt",
-    "nuxt-microcms-module",
-    "@nuxtjs/tailwindcss",
-    "@nuxt/icon"
-  ],
+  modules: ["@vueuse/nuxt", "nuxt-microcms-module", "@nuxtjs/tailwindcss"],
   microCMS: {
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: process.env.MICROCMS_API_KEY,
