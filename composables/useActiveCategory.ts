@@ -1,7 +1,7 @@
 export const useActiveCategory = () => {
   const activeCategory = useState<string | undefined>(
     "activeCategory",
-    () => undefined
+    () => undefined,
   );
 
   const setCategory = (id: string): void => {

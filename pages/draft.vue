@@ -15,7 +15,7 @@ const getData = () => {
       headers: {
         "X-MICROCMS-API-KEY": "153bf9bdde1e48a0b11e40b4844c6322d543",
       },
-    }
+    },
   );
   data.value = response.value;
 };
