@@ -21,7 +21,7 @@ const getAge = (birthday: Birthday) => {
   const currentYearBirthday = new Date(
     today.getFullYear(),
     birthdate.getMonth(),
-    birthdate.getDate()
+    birthdate.getDate(),
   );
 
   // 生まれた年と今年の差を計算
@@ -42,6 +42,12 @@ const profile = {
   age: getAge(birthday),
   email: "shu.saginoya@gmail.com",
 };
+
+const links = {
+  github: "https://github.com/shu-saginoya",
+  zenn: "https://zenn.dev/shu_saginoya",
+  twitter: "https://x.com/shu_saginoya",
+};
 </script>
 
 <template>
@@ -61,27 +67,18 @@ const profile = {
         <span>{{ key }}</span>
         <span class="col-span-2">{{ item }}</span>
       </li>
+      <li
+        v-for="(item, key) in links"
+        :key="key"
+        class="grid grid-cols-3 gap-2 py-2"
+      >
+        <span>{{ key }}</span>
+        <a :href="item" target="_blank" class="col-span-2">{{ item }}</a>
+      </li>
     </ul>
     <p>
       映像制作・営業企画などを経て現職のウェブサイトの制作に従事。高校時代は情報技術科に属していたため、プログラミンについても抵抗なく新技術の導入を行い、継続的な業務改善に役立てています。
     </p>
-    <ul class="flex gap-8 items-center">
-      <li>
-        <NuxtLink to="https://github.com/shu-saginoya" target="_blank">
-          <Icon name="uil:github" color="black" size="24px" alt="GitHub" />
-        </NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="https://zenn.dev/shu_saginoya" target="_blank">
-          <Icon name="simple-icons:zenn" color="black" size="24px" alt="Zenn" />
-        </NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="https://x.com/shu_saginoya" target="_blank">
-          <Icon name="prime:twitter" color="black" size="24px" alt="X" />
-        </NuxtLink>
-      </li>
-    </ul>
     <NuxtLink to="/" class="mt-6 block text-center text-indigo-600">
       ＜ 記事一覧に戻る
     </NuxtLink>
